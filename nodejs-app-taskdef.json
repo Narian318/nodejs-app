@@ -1,12 +1,10 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:167613117387:task-definition/nodejs-app-taskdef:3",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:167613117387:task-definition/nodejs-app-taskdef:6",
     "containerDefinitions": [
         {
             "name": "nodejs-app",
-            "image": "167613117387.dkr.ecr.us-east-1.amazonaws.com/nodejs-app@sha256:1c16d7f7ff579f9781276fa895e27de2ac1a7316f7e14007855b539405d2b6db",
-            "cpu": 1024,
-            "memory": 1024,
-            "memoryReservation": 1024,
+            "image": "167613117387.dkr.ecr.us-east-1.amazonaws.com/nodejs-app",
+            "cpu": 0,
             "portMappings": [
                 {
                     "name": "nodejs-app-5000-tcp",
@@ -31,19 +29,14 @@
                     "awslogs-stream-prefix": "ecs"
                 },
                 "secretOptions": []
-            },
-            "resourceRequirements": [
-                {
-                    "value": "1",
-                    "type": "GPU"
-                }
-            ]
+            }
         }
     ],
     "family": "nodejs-app-taskdef",
+    "taskRoleArn": "arn:aws:iam::167613117387:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::167613117387:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 3,
+    "revision": 6,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -60,7 +53,7 @@
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
         },
         {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
         },
         {
             "name": "ecs.capability.execution-role-ecr-pull"
@@ -77,18 +70,19 @@
     ],
     "placementConstraints": [],
     "compatibilities": [
-        "EC2"
+        "EC2",
+        "FARGATE"
     ],
     "requiresCompatibilities": [
-        "EC2"
+        "FARGATE"
     ],
     "cpu": "1024",
-    "memory": "10240",
+    "memory": "3072",
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2023-09-18T20:45:18.513Z",
+    "registeredAt": "2023-09-18T21:24:52.119Z",
     "registeredBy": "arn:aws:iam::167613117387:root",
     "tags": []
 }
